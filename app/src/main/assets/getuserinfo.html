@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>
+        js调用java
+    </title>
+</head>
+
+<body>
+<p>
+    <xmp id="show">
+    </xmp>
+</p>
+<div align="center">
+    <p>
+        <input type="button" id="enter" value="获取用户信息" onclick="getUserInfo();"
+        />
+    </p>
+</div>
+</body>
+<script>
+
+    function getUserInfo(){
+        window.WebViewJavascriptBridge.callHandler(
+            'getUserInfo1',
+            {'info': 'web传递给app的信息'},
+            function(responseData) {
+                document.getElementById("show").innerHTML = "来自app传递的信息 = " + responseData;
+            }
+        )
+    }
+
+
+</script>
+
+</html>
